@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 
 const SignupComponent = () =>{
     const [values, setValues] = useState({
-        name: 'ryan',
-        email: 'ryan@gmail.com',
-        password: 'sixsix',
+        name: '',
+        email: '',
+        password: '',
         error: '',
         loading: false,
         message: '',
@@ -49,18 +49,18 @@ const SignupComponent = () =>{
 
     const signupForm = () => {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{background: '#EEEEEE'}}>
             <div className="form-group mb-3">
-                <input value={name} onChange={handleChange('name')} type='text' className="form-control" placeholder="Type your name." />
+                <input value={name} onChange={handleChange('name')} type='text' className="form-control" placeholder="Type your name" />
             </div>
                 <div className="form-group mb-3">
-                    <input value={email} onChange={handleChange('email')} type='email' className="form-control" placeholder="Type your email." />
+                    <input value={email} onChange={handleChange('email')} type='email' className="form-control" placeholder="Type your email" />
                 </div>
                 <div className="form-group mb-3">
-                    <input value={password} onChange={handleChange('password')} type='password' className="form-control" placeholder="Type your password." />
+                    <input value={password} onChange={handleChange('password')} type='password' className="form-control" placeholder="Type your password" />
                 </div>
                     <div className="d-grid">
-                        <button className="btn btn-primary">Signup Now</button>
+                        <button className="btn btn-md" style={{background: '#22A39F', color:'#EEEEEE', fontWeight: 'bolder', textShadow: '2px 0 #323232'}}>Signup Now</button>
                     </div>
             </form>
         )

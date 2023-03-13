@@ -5,6 +5,14 @@ import Category from '../../../components/crud/Category';
 import Tag from '../../../components/crud/Tag';
 
 const CategoryTag = () => {
+
+    const handleChange = name => e =>{
+        // console.log(e.target.value);
+        const value = name === 'photo' ? e.target.files[0] : e.target.value
+        formData.set(name, value)
+        setValues({...values, [name]: value, formData, error: ''});
+    };
+    
     return(
     <Layout>
     <Admin>
@@ -14,10 +22,10 @@ const CategoryTag = () => {
             <h2>Manage Categories and Tags</h2>
         </div>
             
-            <div className='col-sm-12 col-md-4 pt-5 pb-5'>
+            <div className='col-sm-12 col-md-6 pt-5 pb-5'>
                 <Category/>
             </div>
-            <div className='col-sm-12 col-md-8 pt-5 pb-5'>
+            <div className='col-sm-12 col-md-6 pt-5 pb-5'>
                 <Tag />
             </div>
         </div>

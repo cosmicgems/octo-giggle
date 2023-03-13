@@ -50,7 +50,7 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
         return (
             size > 0 &&
             size >= limit && (
-                <button onClick={loadMore} className="btn btn-info btn-lg">
+                <button onClick={loadMore} className="btn btn-md fw-bold" style={{borderColor: '#22A39F', color: 'white', backgroundColor: '#22A39F'}}>
                     Load more
                 </button>
             )
@@ -61,9 +61,9 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return            (
-                <article key={i}>
+                <article key={i} style={{backgroundColor: '#EEEEEE', borderColor: '#434242', marginBlockEnd: '0',paddingBlockEnd: '0'}}>
                 <Card blog={blog} />
-                <hr />
+                <hr style={{paddingBlock: '0', marginBlock: '0'}} />
             </article>
             ) 
         })
@@ -71,12 +71,12 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
     const showAllCategories = () => {
         return categories.map((c, i) => (
-            <Link className="btn btn-info mx-1 mt-3" href={`/categories/${c.slug}`} key={i}> {c.name} </Link>
+            <Link className="btn btn-dark btn-sm mx-1 mt-3" href={`/blogs/categories/${c.slug}`} key={i}> {c.name} </Link>
         ))
     }
     const showAllTags = () => {
         return tags.map((t, i) => (
-            <Link className="btn btn-outline-info mx-1 mt-3" href={`/tags/${t.slug}`} key={i}> {t.name} </Link>
+            <Link className="btn btn-outline-dark btn-sm mx-1 mt-1 mb-3" href={`/blogs/tags/${t.slug}`} key={i}> {t.name} </Link>
         ))
     }
     const showLoadedBlogs = () => {
@@ -92,30 +92,29 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
             {head()}
             <Layout>
                 <main>
-                    <div className="container-fluid">
+                    <div className="">
                         <header>
-                            <div className="col-md-12 pt-3">
-                                <h1 className="display-4 fw-bold text-center">
-                                    Programming blogs and tutorials
+                            <div className="col-md-12 " style={{background: '#EEEEEE', paddingBlock: '3vh 1vh'}}>
+                                <h1 className="display-4 fw-bold text-center " style={{fontFamily: 'Great Vibes'}}>
+                                    All Articles
                                 </h1>
                             </div>
-                            <section>
+                            <section className="text-center">
                                 {showAllCategories()}
-                                <hr />
+                                <div style={{paddingInline: '17.5vw'}}>
+                                    <hr style={{paddingInline: '17.5vw'}} />
+                                </div>
                                 {showAllTags()}
                             </section>
                         </header>
                     </div>
-                    <div className="container-fluid">
-                            Show all blogs.
+                    <div className="container-fluid ">
                             {showAllBlogs()}
                     </div>
                     <div className="container-fluid">
-                            Show all loaded blogs.
                             {showLoadedBlogs()}
                     </div>
-                    <div className=" text-center py-5">
-                    <hr/>
+                    <div className=" text-center py-4" style={{background: '#EEEEEE'}}>
                             {loadMoreButton()}
                     </div>
                 </main>
@@ -127,7 +126,7 @@ const Blogs = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 2;
+    let limit = 5;
     return (listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if(data.error) {
             console.log(data.error);

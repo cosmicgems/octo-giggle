@@ -20,6 +20,7 @@ import {
   NavbarText,
 } from 'reactstrap';
 import Link from 'next/link';
+import Subscribe from './Subscribe';
 
 
 Router.onRouteChangeStart = url => NProgress.load()
@@ -34,26 +35,43 @@ function Header(args) {
 
   return (
     <React.Fragment>
-      <Navbar color='' expand='md' container='fluid' light={true} >
-        <NavbarBrand className='fw-bold' href="/">{APP_NAME}</NavbarBrand>
+      <Navbar className='navbar'style={{position: "sticky", zIndex: '1'} } sticky='top' expand='md' container='fluid' dark={true} >
+        <NavbarBrand className='' style={{fontSize:'2rem', fontFamily: 'Italiana', fontWeight:'bolder'}} href="/">{APP_NAME}</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="me-auto" navbar>
+        <Collapse className='justify-content-end' isOpen={isOpen} navbar>
+          <Nav className="nav gap-1 "  navbar>
 
           
+          <NavItem>
+                <NavLink href="/blogs" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Blogs</NavLink>
+            </NavItem>
             <NavItem>
-                <Link href="/blogs">Blogs</Link>
+                <NavLink href="/blogs/categories" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Categories</NavLink>
             </NavItem>
 
             {!isAuth() && 
             <React.Fragment>
-            <NavItem>
-                <Link href="/signup">Signup</Link>
+            <NavItem className=''>
+                <NavLink href="/signup" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signup</NavLink>
             </NavItem>
             <NavItem>
-            <Link href="/signin">Signin</Link>
+            <NavLink href="/signin" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signin</NavLink>
             </NavItem>
             </React.Fragment>}
+            {isAuth() && isAuth().role === 0 && (
+              <NavItem>
+              <NavLink href='/user' style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>
+                {`${isAuth().name}'s Dashboard`}
+              </NavLink>
+            </NavItem>
+            )}
+            {isAuth() && isAuth().role === 1 && (
+              <NavItem>
+              <NavLink href='/admin' style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>
+                {`${isAuth().name}'s Dashboard`}
+              </NavLink>
+            </NavItem>
+            )}
             {isAuth() && (
               <NavItem>
               <NavLink style={{cursor: 'pointer'}} onClick={() => signout(() => router.replace(`/signin`))}>
@@ -61,26 +79,13 @@ function Header(args) {
               </NavLink>
             </NavItem>
             )}
-            {isAuth() && isAuth().role === 0 && (
-              <NavItem>
-              <Link href='/user'>
-                {`${isAuth().name}'s Dashboard`}
-              </Link>
-            </NavItem>
-            )}
-            {isAuth() && isAuth().role === 1 && (
-              <NavItem>
-              <Link href='/admin'>
-                {`${isAuth().name}'s Dashboard`}
-              </Link>
-            </NavItem>
-            )}
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
         </Collapse>
       </Navbar>
-      <NextNProgress  startPosition={0.3} stopDelayMs={200} height={5} showOnShallow={false} />
+      <NextNProgress  startPosition={0.3} stopDelayMs={200} height={2.5} showOnShallow={false} />
+      <Subscribe />
       <Search />
+      
     </React.Fragment>
   );
 };

@@ -6,13 +6,16 @@ import SignupComponent
 const Signup = () => {
     return (
         <Layout>
-            <h2 className='text-center p-2'>Signup Page</h2>
-            <div className='row'>
+        <div style={{backgroundColor: '#EEEEEE', paddingBlock: '5vh 17vh'}}>
+            <h2 style={{}} className='text-center fw-bold'>Signup Now</h2>
+            <h3 className='text-center ' style={{fontFamily: 'Great Vibes'}}>Curate A Life Worth Living</h3>
+            <div className='row' >
                 <div className='col-8 offset-2 col-md-8 offset-md-2'>
                     <SignupComponent />
                 </div>
 
             </div>
+        </div>
 
         </Layout>
     );

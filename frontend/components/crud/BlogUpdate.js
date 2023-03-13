@@ -89,7 +89,7 @@ const BlogUpdate = () => {
     const initTags = () => {
         getTags().then(data => {
             if(data.error) {
-                setValues({...values, error: data.error});
+                setValues({...values, error});
             } else {
                 setTags(data);
             }
@@ -136,7 +136,7 @@ const BlogUpdate = () => {
 
     const handleTagsToggle = (t) => () => {
         setValues({...values, error: ''});
-        const clickedTag = checked.indexOf(t)
+        const clickedTag = checkedTag.indexOf(t)
         const all = [...checkedTag]
 
         if(clickedTag === -1) {

@@ -29,6 +29,11 @@ const blogSchema = new mongoose.Schema({
         required: false,
         max: 1000
     },
+    excerptmobile: {
+        type: String, 
+        required: false,
+        max: 1000
+    },
     mtitle: {
         type: String,
     },

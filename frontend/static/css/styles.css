@@ -4,6 +4,26 @@
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.snow.css';
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cantata+One&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Italiana&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+
+h1{
+    font-size: 2rem;
+}
+h2{
+    font-size: 2rem;
+}
+.body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+footer{
+    margin-top: auto;
+}
+.navbar{
+    background-color: #222222 ;
+}
 
 #nprogress .bar {
     height: 10px !important;
@@ -22,3 +42,41 @@
     object-fit: cover;
 }
 
+
+.video {   
+    object-fit: cover;
+    min-height: 100%;
+    width: 100%;
+    z-index: -1; 
+    position: fixed;
+}
+.video-laptop {   
+    object-fit: cover;
+    max-height: 65vh;
+    width: 100%;
+    z-index: -1; 
+}
+.video-desktop {   
+    object-fit: cover;
+    max-height: 55vh;
+    width: 100%;
+    z-index: -1; 
+}
+.video2 {   
+    object-fit: cover;
+    width: 100%;
+    max-height: 7vh;
+    z-index: -1; 
+}
+.video2-laptop {   
+    object-fit: cover;
+    width: 100%;
+    max-height: 12vh;
+    z-index: -1; 
+    }
+.video2-desktop{   
+    object-fit: cover;
+    width: 100%;
+    max-height: 6vh;
+    z-index: -1; 
+    }

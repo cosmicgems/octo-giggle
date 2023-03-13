@@ -50,7 +50,7 @@ const SingleBlog = ({blog, query}) => {
         return(
             
         blog.categories.map((c, i) => {
-            return <Link className='btn btn-info mx-1 mt-3' key={i} href={`/categories/${c.slug}`}>{c.name}</Link>
+            return <Link className='btn btn-dark btn-sm mx-1 mt-3' key={i} href={`/blogs/categories/${c.slug}`}>{c.name}</Link>
             
         })
         )
@@ -59,14 +59,14 @@ const SingleBlog = ({blog, query}) => {
         return (
             
         blog.tags.map((t, i) => {
-            return <Link className='btn btn-outline-info mx-1 mt-3' key={i} href={`/tags/${t.slug}`}>{t.name}</Link>
+            return <Link className='btn btn-outline-dark btn-sm mx-1 mt-3' key={i} href={`/blogs/tags/${t.slug}`}>{t.name}</Link>
         })
         )
     };
 
     const showRelatedBlogs = () => {
         return related?.map((blog, i) => (
-            <div className="col-md-4" key={i}>
+            <div className="col-md-4 mb-3" key={i}>
                 <article>
                 {/* <div className="row">
 
@@ -81,18 +81,18 @@ const SingleBlog = ({blog, query}) => {
         <React.Fragment>
         {head()}
             <Layout>
-                <main>
+                <main  style={{background: '#EEEEEE'}}>
                     <article>
-                        <div className="container-fluid">
+                        <div className="container-fluid" style={{background: '#EEEEEE'}}>
                             <section>
-                                <div className="row featured-row">
-                                <Image height={500} width={250}  style={{ marginTop: '-30px' }} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                                <div className="row featured-row px-0">
+                                <Image height={600} width={1200}   style={{paddingInline: '0', height: '65vh', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
                                 </div>
                             </section>
                             <section>
                             <div className="container">
-                                <h1 className="display-2 pt-3 pb-2 text-center fw-bold">{blog.title}</h1>
-                                <p className="mark lead mt-3">
+                                <h1 className="display-3 pt-3 pb-2 text-center fw-bold" style={{color: '#22A39F'}}>{blog.title}</h1>
+                                <p className=" lead mt-3" style={{background: '#F3EFE0'}}>
                                 Written by {blog.postedBy?.name} | Published {moment(blog.updatedAt).fromNow()}
                                 </p>
 
@@ -106,15 +106,13 @@ const SingleBlog = ({blog, query}) => {
                                 </div>
                             </section>
                         </div>
-                        <div className="container">
+                        <div className="container" style={{background: '#EEEEEE'}}>
                             <section>
-                                <div className="col-md-12 lead">
+                                <div className="col-md-12 lead  pb-3 px-3" style={{background: '#EEEEEE'}}>
                                     {parse(blog.body)}
                                 </div>
                                 <div className="container pb-5">
-                                    <h4 className="text-center py-5 h2">Related Blogs</h4>
-                                    <hr />
-                                    <p className="lead">Show related Blogs.</p>
+                                    <h4 className="text-center  pt-5 h2">Related Blogs</h4>
                                     <hr />
                                     <div className="row">
                                         {showRelatedBlogs()}
@@ -125,7 +123,6 @@ const SingleBlog = ({blog, query}) => {
                                 <div className="container pb-5">
                                     {/* <h4 className="text-center py-5 h2">Related Blogs</h4> */}
                                     <hr />
-                                    <p className="lead">Show comments.</p>
                                 </div>
                                
                             </section>

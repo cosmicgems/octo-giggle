@@ -18,6 +18,7 @@ exports.create = (req, res) => {
     })
 }
 
+
 exports.list = (req, res) => {
     Category.find({}).exec((err, data) => {
         if(err) {

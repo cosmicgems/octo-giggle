@@ -45,6 +45,16 @@ export const singleBlog = slug => {
         .catch(err => console.log(err)
         );
 };
+export const featuredBlog = slug => {
+    return fetch(`${API}/featured-post`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err)
+        );
+};
 
 export const listRelated = (blog) =>{
     return fetch(`${API}/blogs/related`, {
@@ -102,10 +112,9 @@ export const updateBlog = (blog, token, slug) =>{
     .catch(err => console.log(err));
 };
 
-export const listSearch = (params) => {
+export const listSearch = params => {
     console.log('search params', params);
     let query = queryString.stringify(params);
-    
     console.log('query params', query);
     return fetch(`${API}/blogs/search?${query}`, {
         method: 'GET'
@@ -113,6 +122,5 @@ export const listSearch = (params) => {
         .then(response => {
             return response.json();
         })
-        .catch(err => console.log(err)
-        );
+        .catch(err => console.log(err));
 };

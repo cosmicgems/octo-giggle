@@ -187,33 +187,32 @@ const CreateBlog = () => {
     };
     return (
     <div className="container-fluid">
-    <div className="row">
-    <div className="col-md-8">
-        {createBlogForm()} 
-        {showError()}
-        {showSuccess()}       
-    </div>
-    <div className="col-md-4">
-    <div className="">
-    <div className="form-group pb-2">
-    <h5>Featured Image</h5>
-    <hr/>
-    <small className="text-muted ">Max size: 1mb</small>
-    <label className="btn btn-outline-info col-12">Upload Featured Image
-    <input onChange={handleChange('photo')} type='file' accept="image/*"  hidden/>
-    </label>
-    </div>
+        <div className="row">
+            <div className="col-md-8">
+                {createBlogForm()} 
+                {showError()}
+                {showSuccess()}       
+            </div>
+            <div className="col-md-4">
+                <div className="">
+                    <div className="form-group pb-2">
+                    <h5>Featured Image</h5>
+                    <hr/>
+                    <small className="text-muted ">Max size: 2.5mb</small>
+                    <label className="btn btn-outline-info col-12">Upload Featured Image
+                    <input onChange={handleChange('photo')} type='file' accept="image/*"  hidden/>
+                    </label>
+                    </div>
+                </div>
+                <h5>Categories</h5>
+                <hr />
+                <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
+                <h5>Tags</h5>
+                <hr />
+                <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+            </div>
 
-    </div>
-    <h5>Categories</h5>
-    <hr />
-    <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
-    <h5>Tags</h5>
-    <hr />
-    <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
-    </div>
-
-    </div>
+        </div>
     </div>
     );
     

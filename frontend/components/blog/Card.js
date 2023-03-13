@@ -9,7 +9,7 @@ const Card = ({blog}) => {
         return(
             
         blog?.categories?.map((c, i) => {
-            return <Link className='btn btn-info mx-1 mt-3' key={i} href={`/categories/${c.slug}`}>{c.name}</Link>
+            return <Link className='btn btn-dark btn-sm mx-1 mt-3' key={i} href={`/blogs/categories/${c.slug}`}>{c.name}</Link>
             
         })
         )
@@ -18,43 +18,47 @@ const Card = ({blog}) => {
         return (
             
         blog?.tags?.map((t, i) => {
-            return <Link className='btn btn-outline-info mx-1 mt-3' key={i} href={`/tags/${t.slug}`}>{t.name}</Link>
+            return <Link className='btn btn-outline-dark btn-sm mx-1 mt-3' key={i} href={`/blogs/tags/${t.slug}`}>{t.name}</Link>
         })
         )
     }
     return (
-        <div className="lead pb-4">
-                    <header>
-                        <Link href={`/blogs/${blog.slug}`} >
-                            <h2 className="display-4 py-3 fw-bold">
-                                {blog.title}
-                            </h2>
-                        </Link>
-                    </header>
+        <div className="lead ">
+                    
                     <section>
-                        <p className="mark ml-1 py-2" >
-                            Written by {blog.postedBy?.name} | Published {moment(blog.updatedAt).fromNow()}
-                        </p>
                     </section>
                     <section>
+                    </section>
+                    <div className="row pt-3" style={{background: '#EEEEEE',  paddingBlockEnd:'3vh'}}>
+                        <div className='col-12' style={{marginBlock:'3vh'}}>
+                            <header>
+                                <Link style={{textDecoration: 'none', color: '#22A39F'}} href={`/blogs/${blog.slug}`} >
+                                    <h2 className="display-6 py-3 fw-bold">
+                                        {blog.title}
+                                    </h2>
+                                </Link>
+                            </header>
+                        </div>
+                        <div className="col-md-5">
+                        <div >
+                            <Image height={1500} width={1500} className='img-fluid img featured-img' style={{maxHeight: 'auto', width: '100%', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                        </div>
+                            
                         <p>{showBlogCategories(blog)}
                         {showBlogTags(blog)}
-                        <br/>
-                        <br />
                         </p>
-                    </section>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <Image height={1500} width={1500} className='img-fluid img featured-img' style={{maxHeight: 'auto', width: '100%'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-7">
                             <section>
                             <div className="pb-3">
-                            <h2>{blog.title}</h2>
+                                    
+                                <p className=" ml-1 py-2 fw-bold" style={{background: '#F3EFE0', paddingInlineStart: '1vw'}} >
+                                    Written by {blog.postedBy?.name} | Published {moment(blog.updatedAt).fromNow()}
+                                </p>
                                 {parse(blog.excerpt)}
                             </div>
                                 
-                                <Link className="btn btn-success pt-2" href={`/blogs/${blog.slug}`} >
+                                <Link style={{textDecoration: 'underline', fontStyle: 'italic', borderColor: '#22A39F', color: '#22A39F'}} className="fw-bold btn btn-outline pt-2" href={`/blogs/${blog.slug}`} >
                                     Read more
                                 </Link>
                             </section>

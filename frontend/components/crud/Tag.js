@@ -37,7 +37,7 @@ const Tag = () => {
                     onDoubleClick={() => deleteConfirm(t.slug)}
                     title="Double click to delete"
                     key={i}
-                    className="btn btn-outline-primary mx-1  mt-3"
+                    className="btn btn-outline-dark mx-1  mt-3"
                 >
                     {t.name}
                 </button>
@@ -108,7 +108,7 @@ const Tag = () => {
                 <input type="text" className="form-control mb-3" onChange={handleChange} value={name} required />
             </div>
             <div className='d-grid'>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-outline-dark">
                     Create
                 </button>
             </div>

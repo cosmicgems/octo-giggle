@@ -6,6 +6,7 @@ import { create, getCategories, removeCategory } from "../../actions/category";
 const Category = () => {
     const [values, setValues] = useState({
         name: '',
+        photo: {},
         error: false,
         success: false,
         categories: [],
@@ -21,7 +22,7 @@ const Category = () => {
         }, [reload])
 
         const loadCategories = () => {
-            getCategories().then(data => {
+            getCategories()?.then(data => {
                 if(data.error) {
                     console.log(data.error);
                 } else {
@@ -32,7 +33,7 @@ const Category = () => {
 
         const showCategories = () => {
             return categories.map((c, i) => {
-                return <button onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="btn btn-outline-success mx-1  mt-3">{c.name}</button>
+                return <button onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="btn btn-dark mx-1  mt-3">{c.name}</button>
             })
         };
 
@@ -65,6 +66,14 @@ const Category = () => {
                 }
             });
         };
+        
+
+    const handleChangePhoto = name => e =>{
+        // console.log(e.target.value);
+        const value = name === 'photo' ? e.target.files[0] : e.target.value
+        formData.set(name, value)
+        setValues({...values, [name]: value, formData, error: ''});
+    };
 
         const handleChange = e => {
             setValues({ ...values, name: e.target.value, error: false, success: false, removed: ''});
@@ -97,8 +106,18 @@ const Category = () => {
                     <input type='text' className="form-control mb-3" onChange={handleChange} value={name} />
                 </div>
                 <div className="d-grid">
-                    <button type='submit' className="btn btn-primary">Create</button>
+                    <button type='submit' className="btn btn-dark">Create</button>
 
+                </div>
+                <div className="">
+                    <div className="form-group pb-2">
+                    <h5 style={{paddingBlockStart:'2vh'}}>Upload Featured Image For Category</h5>
+                    <hr/>
+                    <small className="text-muted ">Max size: 2.5mb</small>
+                    <label className="btn btn-outline-info col-12">Upload Featured Image
+                    <input onChange={handleChangePhoto('photo')} type='file' accept="image/*"  hidden/>
+                    </label>
+                    </div>
                 </div>
             </form>
             )

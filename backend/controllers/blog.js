@@ -47,6 +47,7 @@ exports.create = (req, res) => {
         blog.title = title 
         blog.body = body
         blog.excerpt = smartTrim(body, 320, ' ', '...');
+        blog.excerptmobile = smartTrim(body, 150, ' ', '...');
         blog.slug = slugify(title).toLowerCase()
         blog.mtitle = `${title} | ${process.env.APP_NAME}`
         blog.mdesc = stripHtml(body.substring(0, 160)).result
@@ -99,7 +100,7 @@ exports.list= (req, res) => {
     .populate('categories', '_id name slug' )
     .populate('tags', '_id name slug' )
     .populate('postedBy', '_id name username' )
-    .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+    .select('_id title slug excerpt excerptmobile categories tags postedBy createdAt updatedAt')
     .exec((err, data) => {
         if(err) {
             return res.json({
@@ -109,20 +110,21 @@ exports.list= (req, res) => {
         res.json(data)
     })
 }
+
 exports.listAllBlogsCategoriesTags= (req, res) => {
-    let limit = req.body.limit ? parseInt(req.body.limit) : 10
+    let limit = req.body.limit ? parseInt(req.body.limit) : 5
     let skip = req.body.skip ? parseInt(req.body.skip) : 0
     let blogs;
     let categories;
     let tags;
     Blog.find({})
-    .populate('categories', '_id name slug' )
+    .populate('categories', '_id name slug photo' )
     .populate('tags', '_id name slug' )
     .populate('postedBy', '_id name profile' )
     .sort({createdAt: -1})
     .skip(skip)
     .limit(limit)
-    .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+    .select('_id title slug excerpt excerptmobile  categories tags postedBy createdAt updatedAt')
     .exec((err, data) => {
         if(err) {
             return res.json({
@@ -158,6 +160,21 @@ exports.read= (req, res) => {
     .populate('tags', '_id name slug' )
     .populate('postedBy', '_id name username' )
     .select('_id title body slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+    .exec((err, data) => {
+        if(err) {
+            return res.json({
+                error: errorHandler(err)
+            })
+        }
+        res.json(data);
+    });
+};
+exports.readFeatured= (req, res) => {
+    Blog.findOne({tags: {_id: '6408ee7d8b910fe9a18568c9'}})
+    .populate('categories', '_id name slug' )
+    .populate('tags', '_id name slug' )
+    .populate('postedBy', '_id name username' )
+    .select('_id title body slug mtitle mdesc excerpt excerptmobile photo categories tags postedBy createdAt updatedAt')
     .exec((err, data) => {
         if(err) {
             return res.json({
@@ -279,17 +296,21 @@ exports.listRelated = (req, res) => {
 };
 
 exports.listSearch = (req, res) => {
-    const {search} = req.query;
-    if(search) {
-        Blog.find({
-            $or: [{title: {$regex: search, $options: 'i'}}, {body: {$regex: search, $options: 'i'}}, {categories: {name: {$regex: search, $options: 'i'}}}, {tags: {name: {$regex: search, $options: 'i'}}}]
-        }, (err, blogs) => {
-            if(err) {
-                return res.status(400).json({
-                    error: errorHandler(err)
-                })
+    console.log(req.query);
+    const { search } = req.query;
+    if (search) {
+        Blog.find(
+            {
+                $or: [{ title: { $regex: search, $options: 'i' } }, { body: { $regex: search, $options: 'i' } }]
+            },
+            (err, blogs) => {
+                if (err) {
+                    return res.status(400).json({
+                        error: errorHandler(err)
+                    });
+                }
+                res.json(blogs);
             }
-            res.json(blogs)
-        }).select('-photo -body');
+        ).select('-photo -body');
     }
 };
