@@ -5,7 +5,7 @@ import { signup } from '../../../../actions/auth';
 import { withRouter } from 'next/router';
 import jwt from 'jsonwebtoken';
 
-const ActivateAccount = ({router}) => {
+const ActivateAccount = () => {
     const router = withRouter();
     const [values, setValues] = useState({
         name: '',
