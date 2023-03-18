@@ -30,3 +30,5 @@ const AdminIndex = () => {
     };
 
 export default AdminIndex;
+
+//just to make sure all files are saved
