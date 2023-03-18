@@ -6,10 +6,6 @@ const categorySchema = new mongoose.Schema({
         required: true,
         max: 32,
         index: true
-    }, 
-    photo: {
-        data: Buffer,
-        contentType: String
     },
     slug: {
         type: String,

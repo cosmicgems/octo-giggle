@@ -9,6 +9,7 @@ const { errorHandler } = require('../helpers/dbErrorHandler')
 const fs = require('fs')
 const {smartTrim} = require('../helpers/blog')
 const { errorMonitor } = require('events')
+const User = require('../models/user')
 
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm()
@@ -120,7 +121,7 @@ exports.listAllBlogsCategoriesTags= (req, res) => {
     Blog.find({})
     .populate('categories', '_id name slug photo' )
     .populate('tags', '_id name slug' )
-    .populate('postedBy', '_id name profile' )
+    .populate('postedBy', '_id name profile username' )
     .sort({createdAt: -1})
     .skip(skip)
     .limit(limit)
@@ -284,7 +285,7 @@ exports.listRelated = (req, res) => {
 
     Blog.find({_id: {$ne: _id}, categories: {$in: categories}})
     .limit(limit)
-    .populate('postedBy', '_id name profile')
+    .populate('postedBy', '_id name username profile')
     .select('title slug excerpt postedBy createdAt updatedAt')
     .exec((err, blogs) => {
         if (err) {
@@ -313,4 +314,28 @@ exports.listSearch = (req, res) => {
             }
         ).select('-photo -body');
     }
+};
+
+exports.listByUser = (req, res) => {
+    User.findOne({username: req.params.username}).exec((err, user) => {
+        if(err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+        let userId = user._id
+        Blog.find({postedBy: userId})
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username')
+        .select('_id title slug postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if(err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+    });
 };

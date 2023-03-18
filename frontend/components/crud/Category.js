@@ -52,6 +52,9 @@ const Category = () => {
                 } else {
                     setValues({...values, error: false, success:false, name:'', removed: !removed, reload: !reload});
                 }
+            })
+            .catch((err) => {
+                console.log("error", err);
             });
         };
 
@@ -64,6 +67,9 @@ const Category = () => {
                 } else {
                     setValues({ ...values, error: false, success: !success, name: '', removed: '', reload: !reload});
                 }
+            })
+            .catch((err) => {
+            console.log("error", err);
             });
         };
         
@@ -108,16 +114,6 @@ const Category = () => {
                 <div className="d-grid">
                     <button type='submit' className="btn btn-dark">Create</button>
 
-                </div>
-                <div className="">
-                    <div className="form-group pb-2">
-                    <h5 style={{paddingBlockStart:'2vh'}}>Upload Featured Image For Category</h5>
-                    <hr/>
-                    <small className="text-muted ">Max size: 2.5mb</small>
-                    <label className="btn btn-outline-info col-12">Upload Featured Image
-                    <input onChange={handleChangePhoto('photo')} type='file' accept="image/*"  hidden/>
-                    </label>
-                    </div>
                 </div>
             </form>
             )

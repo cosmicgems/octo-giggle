@@ -53,7 +53,7 @@ const Card = ({blog}) => {
                             <div className="pb-3">
                                     
                                 <p className=" ml-1 py-2 fw-bold" style={{background: '#F3EFE0', paddingInlineStart: '1vw'}} >
-                                    Written by {blog.postedBy?.name} | Published {moment(blog.updatedAt).fromNow()}
+                                <Link href={`/profile/${blog.postedBy.username}`}> Written by {blog.postedBy?.username} </Link>| Published {moment(blog.updatedAt).fromNow()}
                                 </p>
                                 {parse(blog.excerpt)}
                             </div>

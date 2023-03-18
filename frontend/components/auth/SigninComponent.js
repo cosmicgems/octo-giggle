@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { signin, authenticate,  isAuth } from "../../actions/auth";
+import Link from "next/link";
 
 const SigninComponent = () =>{
     const [values, setValues] = useState({
@@ -77,6 +78,10 @@ const SigninComponent = () =>{
         {showLoading()}
         {showMessage()}
             {showForm && signinForm()}
+            <hr/>
+            <Link href="/auth/password/forgot">
+                <button className="btn btn-outline-danger btn-md">Reset Password</button>
+            </Link>
         </React.Fragment>
         
     )

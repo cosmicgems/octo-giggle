@@ -36,7 +36,7 @@ const BlogUpdate = () => {
     const token = getCookie('token');
 
     useEffect(() => {
-        setValues({ ...values, formData: new FormData() });
+        setValues({ ...values});
         initBlog();
         initCategories();
         initTags();
@@ -54,6 +54,7 @@ const BlogUpdate = () => {
                     setBody(data.body);
                     setCategoriesArray(data.categories);
                     setTagsArray(data.tags);
+                    setValues({ ...values, formData: new FormData(), title: data.title });
                 }
             });
         }

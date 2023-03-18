@@ -43,10 +43,13 @@ function Header(args) {
 
           
           <NavItem>
+                <NavLink href="/" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Home</NavLink>
+            </NavItem>
+          <NavItem>
                 <NavLink href="/blogs" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Blogs</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="/blogs/categories" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Categories</NavLink>
+                <NavLink href="/contact" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Contact</NavLink>
             </NavItem>
 
             {!isAuth() && 
@@ -79,6 +82,9 @@ function Header(args) {
               </NavLink>
             </NavItem>
             )}
+          <NavItem>
+                <NavLink href="/user/crud/create" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Write a blog</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

@@ -29,13 +29,15 @@ mongoose.connect(process.env.DATABASE).then(() => console.log("DB connected")).c
  const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
 const tagRoutes = require('./routes/tag');
+const formRoutes = require('./routes/form');
 
  //routes middleware
  app.use('/api', blogRoutes);
  app.use('/api', authRoutes);
  app.use('/api', userRoutes);
  app.use('/api', categoryRoutes);
- app.use('/api', tagRoutes)
+ app.use('/api', tagRoutes);
+ app.use('/api', formRoutes);
 
 
  //port

@@ -10,6 +10,8 @@ import Image from "next/image";
 import parse from 'html-react-parser';
 import moment from 'moment'
 import SmallCard from "../../components/blog/SmallCard";
+import { DiscussionEmbed } from "disqus-react";
+import Disqus from "../../components/Disqus";
 
 const SingleBlog = ({blog, query}) => {
     const router = useRouter();
@@ -93,7 +95,7 @@ const SingleBlog = ({blog, query}) => {
                             <div className="container">
                                 <h1 className="display-3 pt-3 pb-2 text-center fw-bold" style={{color: '#22A39F'}}>{blog.title}</h1>
                                 <p className=" lead mt-3" style={{background: '#F3EFE0'}}>
-                                Written by {blog.postedBy?.name} | Published {moment(blog.updatedAt).fromNow()}
+                    <Link href={`/profile/${blog.postedBy.username}`}> Written by {blog.postedBy?.username} </Link>| Published {moment(blog.updatedAt).fromNow()}
                                 </p>
 
                                 <div className="pb-3">
@@ -121,7 +123,7 @@ const SingleBlog = ({blog, query}) => {
                                 </div>
 
                                 <div className="container pb-5">
-                                    {/* <h4 className="text-center py-5 h2">Related Blogs</h4> */}
+                                    <Disqus blog={blog} />
                                     <hr />
                                 </div>
                                

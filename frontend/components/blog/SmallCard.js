@@ -28,7 +28,7 @@ const SmallCard = ({blog}) => {
 
             <div className='card-body'>
                 <div className=''>
-                    Posted {moment(blog.updatedAt).fromNow()} by <Link className='' href={`/`}>{blog.postedBy.name}</Link>
+                    Posted {moment(blog.updatedAt).fromNow()} by <Link href={`/profile/${blog.postedBy.username}`}>{blog.postedBy?.username} </Link>
                 </div>
                 
             </div>
