@@ -39,6 +39,14 @@ const formRoutes = require('./routes/form');
  app.use('/api', tagRoutes);
  app.use('/api', formRoutes);
 
+app.use(express.static(path.join(__dirname, "./frontend/build")));
+
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./frontend/index.html"),
+
+    )
+})
 
  //port
  const port = process.env.PORT || 8000
