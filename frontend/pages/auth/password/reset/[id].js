@@ -2,11 +2,11 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import Layout from '../../../../components/Layout';
 import { forgotPassword, resetPassword } from '../../../../actions/auth';
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 
 const ResetPassword = () => {
-    const router = withRouter();
+    const router = useRouter();
     const [values, setValues] = useState({
         name: '',
         newPassword: '',

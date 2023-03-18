@@ -2,11 +2,11 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import Layout from '../../../../components/Layout';
 import { signup } from '../../../../actions/auth';
-import { withRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import jwt from 'jsonwebtoken';
 
 const ActivateAccount = () => {
-    const router = withRouter();
+    const router = useRouter();
     const [values, setValues] = useState({
         name: '',
         token: '',
