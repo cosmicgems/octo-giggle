@@ -51,7 +51,7 @@ const ContactForm = ({authorEmail}) => {
                     <label className="lead">Email</label>
                     <input type='email' onChange={handleChange('email')} className="form-control" value={email} required  />
                 </div>
-                
+                 //another note
                 <div className="form-group mb-3">
                     <label className="lead">Message</label>
                     <textarea onChange={handleChange('message')} type='text' className="form-control" value={message} required rows='10'></textarea>
