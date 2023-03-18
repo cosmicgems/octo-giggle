@@ -9,13 +9,13 @@ const ActivateAccount = () => {
     const router = useRouter();
     const [values, setValues] = useState({
         name: '',
-        token: '',
-        error: '',
+        token: '' ,
+        error: '' ,
         success: '',
         loading: false,
         message: '',
         showButton: true 
-    });
+    } ) ;
 
     const {name, token, error, success, loading, showButton} = values;
 
@@ -26,7 +26,7 @@ const ActivateAccount = () => {
             setValues({...values, name, token})
         }
     }, [router]);
-
+//small note
     const clickSubmit = e => {
         e.preventDefault();
         setValues({...values, loading: true, error: false});
