@@ -5,7 +5,7 @@ import { forgotPassword, resetPassword } from '../../../../actions/auth';
 import { withRouter } from 'next/router';
 
 
-const ResetPassword = ({router}) => {
+const ResetPassword = () => {
     const router = withRouter();
     const [values, setValues] = useState({
         name: '',
