@@ -23,7 +23,7 @@ mongoose.connect(process.env.DATABASE).then(() => console.log("DB connected")).c
  app.use(bodyParser.json())
  app.use(cookieParser())
  
- 
+ //note
  const blogRoutes = require('./routes/blog')
  const authRoutes = require('./routes/auth')
  const userRoutes = require('./routes/user');
