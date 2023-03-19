@@ -39,9 +39,6 @@ const formRoutes = require('./routes/form');
  app.use('/api', tagRoutes);
  app.use('/api', formRoutes);
 
-app.get('/api/test', (req, res) => {
-    res.json({body: 'hello world' + Date.now()});
-} );
 
  //port
  const port = process.env.PORT || 8000
