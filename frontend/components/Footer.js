@@ -4,12 +4,9 @@ import { BsFacebook,BsTwitter,BsInstagram } from "react-icons/bs";
 const Footer = () => {
     return (
         <React.Fragment>
-            <footer  style={{ marginBlockStart:'auto', bottom: 0, width:"100%", paddingBlockEnd:'3vh', background:'#EEEEEE'}}>
-            <div style={{paddingInline: '17.5vw'}} >
-                <hr/>
-            </div>
+            <footer  style={{   paddingBlock:'2vh 3vh', background:'#EEEEEE'}}>
             
-                <div className="row" style={{textAlign:'center'}}  >
+                <div className="row container-fluid" style={{textAlign:'center'}}  >
                 <div className="col-3">
                     
                 </div>
@@ -22,7 +19,7 @@ const Footer = () => {
                     
                     
                 </div>
-                <div className="col-3">
+                <div className="col-sm-3">
                     
                 </div>
                         

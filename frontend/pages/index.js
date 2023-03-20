@@ -88,7 +88,7 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
     return(
         <Layout >
         {isMobile &&
-        <div className='' style={{width: '100%'}}>
+        <div className='' >
             <div style={{height: '50vh'}} >
                 
                 <div>

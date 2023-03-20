@@ -36,7 +36,7 @@ const TrendingCard = ({blog}) => {
         <React.Fragment>
               
               {isMobile && 
-                        <div >
+                        <div className="" >
                         <Link style={{textDecoration: 'none'}}  href={`/blogs/${blog.slug}`}>
                             <img style={{height:'30vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080}  src={`${API}/blog/photo/${blog.slug}`}  alt="pic"/>
                             
