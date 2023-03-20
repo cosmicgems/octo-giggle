@@ -41,7 +41,7 @@ const Card = ({blog}) => {
                         </div>
                         <div className="col-md-5">
                         <div >
-                            <Image height={1500} width={1500} className='img-fluid img featured-img' style={{maxHeight: 'auto', width: '100%', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                            <img height={1500} width={1500} className='img-fluid img featured-img' style={{maxHeight: 'auto', width: '100%', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
                         </div>
                             
                         <p>{showBlogCategories(blog)}

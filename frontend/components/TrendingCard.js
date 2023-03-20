@@ -62,7 +62,7 @@ const TrendingCard = ({blog}) => {
                     }
                     {isTablet && !isLaptop &&
                         <div  >
-                            <Image style={{height:'35vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
+                            <img style={{height:'35vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
                             
                             <div style={{background: 'rgba(34, 34, 34, .65)', height: '35vh'}}>
                             <Link href={`/blogs/${blog.slug}`} style={{textDecoration: 'none'}}>
@@ -92,7 +92,7 @@ const TrendingCard = ({blog}) => {
                     }
                     {isLaptop && !isDesktop &&
                         <div style={{height:'55vh', marginBlockStart:'5vh'}}>
-                            <Image style={{height:'45vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
+                            <img style={{height:'45vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
                             
                             <div style={{background: 'rgba(34, 34, 34, .65)', height: '45vh'}}>
                             <div style={{paddingInline:'3vw'}}>
@@ -119,7 +119,7 @@ const TrendingCard = ({blog}) => {
                     }
                     {isDesktop && 
                         <div style={{height:'55vh', marginBlockStart:'5vh'}}>
-                            <Image style={{height:'45vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
+                            <img style={{height:'45vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080} src={`${API}/blog/photo/${blog.slug}`}   alt="pic"/>
                             
                             <div style={{background: 'rgba(34, 34, 34, .65)', height: '45vh'}}>
                             <Link  href={`/blogs/${blog.slug}`} style={{ textDecoration: 'none'}}>
