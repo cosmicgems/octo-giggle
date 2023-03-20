@@ -38,7 +38,7 @@ const TrendingCard = ({blog}) => {
               {isMobile && 
                         <div >
                         <Link style={{textDecoration: 'none'}}  href={`/blogs/${blog.slug}`}>
-                            <Image style={{height:'30vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080}  src={`${API}/blog/photo/${blog.slug}`}  alt="pic"/>
+                            <img style={{height:'30vh',  objectFit: 'cover', position:'absolute', zIndex: '-1'}} className="img-fluid"   width={1920} height={1080}  src={`${API}/blog/photo/${blog.slug}`}  alt="pic"/>
                             
                             <div style={{background: 'rgba(34, 34, 34, .5)', height: '30vh'}}>
                             <h6 style={{ color: '#22A39F', fontSize:'1.6rem', textDecoration:'underline', fontWeight:'bold', paddingBlockStart: '20vh', textAlign: 'center', paddingInline:'6vw'}}>{blog.title}</h6>

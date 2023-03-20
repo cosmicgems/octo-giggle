@@ -88,7 +88,7 @@ const SingleBlog = ({blog, query}) => {
                         <div className="container-fluid" style={{background: '#EEEEEE'}}>
                             <section>
                                 <div className="row featured-row px-0">
-                                <Image height={600} width={1200}   style={{paddingInline: '0', height: '65vh', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
+                                <img height={600} width={1200}   style={{paddingInline: '0', height: '65vh', objectFit:'cover'}} src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} />
                                 </div>
                             </section>
                             <section>
