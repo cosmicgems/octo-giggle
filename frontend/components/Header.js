@@ -52,15 +52,15 @@ function Header(args) {
                 <NavLink href="/contact" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Contact</NavLink>
             </NavItem>
 
-            {!isAuth() && 
+            {/* {!isAuth() && 
             <React.Fragment>
-            {/* <NavItem className=''>
+            <NavItem className=''>
                 <NavLink href="/signup" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signup</NavLink>
             </NavItem>
             <NavItem>
             <NavLink href="/signin" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signin</NavLink>
-            </NavItem> */}
-            </React.Fragment>}
+            </NavItem>
+            </React.Fragment>} */}
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
               <NavLink href='/user' style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>
@@ -75,16 +75,16 @@ function Header(args) {
               </NavLink>
             </NavItem>
             )}
-            {isAuth() && (
+            {/* {isAuth() && (
               <NavItem>
               <NavLink style={{cursor: 'pointer'}} onClick={() => signout(() => router.replace(`/signin`))}>
                 Signout
               </NavLink>
             </NavItem>
-            )}
-          <NavItem>
+            )} */}
+          {/* <NavItem>
                 <NavLink href="/user/crud/create" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Write a blog</NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
       </Navbar>
