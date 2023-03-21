@@ -10,3 +10,5 @@ export const APP_NAME = publicRuntimeConfig.APP_NAME;
 export const DOMAIN = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.DOMAIN_PRODUCTION
     : publicRuntimeConfig.DOMAIN_DEVELOPMENT;
+
+export const GOOGLE_CLIENT_ID = publicRuntimeConfig.GOOGLE_CLIENT_ID;

@@ -15,6 +15,7 @@ export default function Document() {
             <NextScript />
             <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
             <script id="dsq-count-scr" src="//pearlbox.disqus.com/count.js" async></script>
+            <script src="/node_modules/quill-image-resize-module/image-resize.min.js"></script>
         </body>
     </Html>
   )

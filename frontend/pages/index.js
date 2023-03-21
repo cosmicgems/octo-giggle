@@ -4,11 +4,47 @@ import FeaturedCard from '../components/FeaturedCard';
 import TrendingCard from '../components/TrendingCard';
 import {useMediaQuery} from 'react-responsive';
 import { featuredBlog, listBlogsWithCategoriesAndTags, singleBlog } from '../actions/blog';
+import {subscribeForm} from "../actions/subscribe";
 import { useState } from 'react';
 import Blogs from './blogs';
 import Image from 'next/image';
+import { animated, useTransition, useSpring } from '@react-spring/web'
 
 const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
+    const [values, setValues] = useState({
+        name: '',
+        email: '',
+        sent: false,
+        buttonText: 'Subscribe',
+        success: false,
+        error: false
+    });
+
+    const { name, email, sent, buttonText, success, error} = values;
+
+    const clickSubmit = (e) => {
+        e.preventDefault();
+        setValues({...values, buttonText: 'Sending...'})
+        subscribeForm({ name, email}).then(data => {
+            if(data.error) {
+                setValues({...values, error: data.error})
+            } else {
+                setValues({...values, sent:true, name:'',email: '',  buttonText:'Sent', success: data.success})
+            }
+        })
+    };
+
+    
+    const handleChange = name => e =>{
+        setValues({...values, [name]: e.target.value, error: false, success: false, buttonText: 'Send Message'});
+    };
+
+    const showSuccessMessage = () => success && (<div className="alert alert-info">Thank you for contacting us.</div>)
+    const showErrorMessage = () => (
+    <div className="alert alert-danger" style={{display: error ? '': 'none'}}>
+        {error}
+    </div>
+    )
 
     const isMobile = useMediaQuery({
         query: '(max-width: 431px)'
@@ -82,7 +118,12 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
         return tags.map((t, i) => (
             <Link className="btn btn-outline-info mx-1 mt-3" href={`/tags/${t.slug}`} key={i}> {t.name} </Link>
         ))
-    }
+    };
+
+    const [isToggled] = useState(true);
+    const fade = useSpring({
+        opacity: isToggled ? 1: 0
+    });
 
 
     return(
@@ -102,7 +143,7 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
                     <input style={{textAlign:'center'}} type='name' className='form-control mb-2' placeholder='Your Name' />
                     <input style={{textAlign:'center'}} type='email' className='form-control' placeholder='Your Email' />
                     <div className='d-grid pt-2 ' >
-                    <button className='btn btn-sm btn-outline-dark'>Subscribe</button>
+                    <button type='submit' className='btn btn-sm btn-outline-dark'>Subscribe</button>
                     </div>
                 </form>
                     
@@ -127,17 +168,17 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
             <div >
                 <div style={{paddingBlock: '7vh'}}>
                     
-                <form style={{padding: '5vh 25vw 6vh'}}>
+                <form onSubmit={clickSubmit} style={{padding: '5vh 25vw 6vh'}}>
                 <h2 style={{textAlign:'center', fontSize: '4rem', fontWeight: 'bold'}}>
                     Pearl Box
                 </h2>
                 <p style={{textAlign:'center'}}>
                     Curate A Lifestyle Worth Living
                 </p>
-                    <input style={{textAlign:'center'}} type='name' className='form-control mb-2' placeholder='Your Name' />
-                    <input style={{textAlign:'center'}} type='email' className='form-control' placeholder='Your Email' />
+                    <input style={{textAlign:'center'}} type='name' value={name} className='form-control mb-2' placeholder='Your Name'  onChange={handleChange('name')} required />
+                    <input style={{textAlign:'center'}} type='email' value={email} className='form-control' placeholder='Your Email'  onChange={handleChange('email')} required  />
                     <div className='d-grid pt-2 ' >
-                    <button className='btn btn-sm btn-outline-dark'> Subscribe </button>
+                    <button type='submit' className='btn btn-sm btn-outline-dark'> Subscribe </button>
                     </div>
                 </form>
                 </div>
@@ -160,7 +201,7 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
                 <video autoPlay muted loop className="video-laptop" playsInline={true} style={{position: 'absolute'}} >
                     <source src="/static/images/pearl-shimmer.mp4" />
                 </video>
-                <div style={{paddingBlock: '7vh'}}>
+                <animated.div style={{paddingBlock: '7vh'}}>
                     
                 <form style={{padding: '5vh 25vw 6vh'}}>
                 <h2 style={{textAlign:'center'}}>
@@ -175,7 +216,7 @@ const Index = ({blogs, categories, tags, totalBlogs, blogsLimit, blogSkip}) => {
                     <button className='btn btn-sm btn-dark fw-bold' style={{fontSize: '1rem'}}> Subscribe </button>
                     </div>
                 </form>
-                </div>
+                </animated.div>
             </div>
         <h2 style={{textAlign:'center', paddingBlockStart:'12vh'}}>Latest Lifestyle Post</h2>
             {showTrending()}

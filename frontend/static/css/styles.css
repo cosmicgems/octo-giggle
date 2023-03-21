@@ -51,7 +51,7 @@ footer{
 .video {   
     object-fit: cover;
     min-height: 100%;
-    width: auto;
+    width: 100%;
     z-index: -1; 
     position: fixed;
 }

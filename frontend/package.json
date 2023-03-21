@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tinymce/tinymce-react": "^4.3.0",
+    "@winterlood/quill-image-resize-module-react": "^3.1.6",
     "@zeit/next-css": "^1.0.1",
     "disqus-react": "^1.1.5",
     "formidable": "^2.1.1",
@@ -23,6 +25,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "next": "^13.2.1",
+    "next-auth": "^4.20.1",
     "nextjs-progressbar": "^0.0.16",
     "nprogress": "^0.2.0",
     "query-string": "^8.1.0",
@@ -33,6 +36,7 @@
     "react-icons": "^4.8.0",
     "react-quill": "^2.0.0",
     "react-responsive": "^9.0.2",
+    "react-spring": "^9.7.1",
     "reactstrap": "^9.1.6",
     "slugify": "^1.6.5"
   },

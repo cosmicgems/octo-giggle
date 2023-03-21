@@ -5,7 +5,7 @@ import Private from '../../components/auth/Private';
 const UserIndex = () => {
     return(
     <Layout>
-        <Private><div className='container-fluid'>
+        <Private><div className='container-fluid' style={{background: '#EEEEEE', paddingBlock: '2.5vh 3vh'}}>
         <div className='row'>
         <div className='col-sm-12 pt-3'>
             <h2>User Dashboard</h2>
@@ -13,7 +13,7 @@ const UserIndex = () => {
             
             <div className='col-sm-12 col-md-4 pt-3 pb-5'>
                 <ul className='list-group'>
-                    <li className='list-group-item'><Link href='/user/crud/create'>Create Blog</Link></li>
+                    <li className='list-group-item'><Link href='/user/crud/blog'>Create Blog</Link></li>
                     <li className='list-group-item'><Link href='/user/crud/blogs'>Update/Delete Blogs</Link></li>
                     <li className='list-group-item'><Link href='/user/update'>Update Profile</Link></li>
                 </ul>

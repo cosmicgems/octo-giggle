@@ -54,12 +54,12 @@ function Header(args) {
 
             {!isAuth() && 
             <React.Fragment>
-            <NavItem className=''>
+            {/* <NavItem className=''>
                 <NavLink href="/signup" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signup</NavLink>
             </NavItem>
             <NavItem>
             <NavLink href="/signin" style={{textDecoration:'none', color:'#F3EFE0', fontWeight: 'bold'}}>Signin</NavLink>
-            </NavItem>
+            </NavItem> */}
             </React.Fragment>}
             {isAuth() && isAuth().role === 0 && (
               <NavItem>

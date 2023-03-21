@@ -30,6 +30,7 @@ mongoose.connect(process.env.DATABASE).then(() => console.log("DB connected")).c
 const categoryRoutes = require('./routes/category');
 const tagRoutes = require('./routes/tag');
 const formRoutes = require('./routes/form');
+const subscribeRoutes = require('./routes/subscribe');
 
  //routes middleware
  app.use('/api', blogRoutes);
@@ -38,6 +39,7 @@ const formRoutes = require('./routes/form');
  app.use('/api', categoryRoutes);
  app.use('/api', tagRoutes);
  app.use('/api', formRoutes);
+ app.use('/api', subscribeRoutes);
 
 
  //port

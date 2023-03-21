@@ -3,8 +3,10 @@ import React from 'react'
 import Layout from '../components/Layout';
 import SigninComponent from '../components/auth/SigninComponent';
 import { useRouter } from 'next/router';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const Signin = () => {
+    const {data: session} = useSession();
     const router = useRouter();
     const showRedirectMessage = () => {
         if(router.query.message) {
